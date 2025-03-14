@@ -1,5 +1,5 @@
 import * as cdk from 'aws-cdk-lib';
-import { Construct } from "constructs";
+import { Construct } from 'constructs';
 import { Function, InlineCode, Runtime, Code} from 'aws-cdk-lib/aws-lambda';
 import * as path from 'path';
 
