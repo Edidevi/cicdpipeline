@@ -6,7 +6,7 @@ import { MyPipelineAppStage } from './stage';
 
 // import * as sqs from 'aws-cdk-lib/aws-sqs';
 
-export class CicdpipelineStack extends cdk.Stack {
+export class CiCdPipelineStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
   
