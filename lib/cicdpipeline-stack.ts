@@ -14,7 +14,7 @@ export class CicdpipelineStack extends cdk.Stack {
       pipelineName: 'OsaruPipeline',
       synth: new ShellStep('Synth', {
         input: CodePipelineSource.gitHub('Edidevi/cicdpipeline', 'main'),
-        commands: [ 'npm ci'
+        commands: [ 'npm ci',
                     'npm run build',
                     'npx cdk synth']
       })
