@@ -10,29 +10,15 @@ export class CiCdPipelineStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
   
-   const pipeline = new CodePipeline(this, 'Pipeline', {
+    new CodePipeline(this, 'Pipeline', {
       pipelineName: 'OsaruPipeline',
       synth: new ShellStep('Synth', {
         input: CodePipelineSource.gitHub('Edidevi/cicdpipeline', 'main'),
         commands: [ 'npm ci',
                     'npm run build',
                     'npx cdk synth']
-      })
+      }),
     });
-
-
-    const testingStage = pipeline.addStage(new MyPipelineAppStage(this, "test", {
-      env: { account: "701182342014", region: "us-east-1" }
-    }));
-
-    testingStage.addPost(new ManualApprovalStep('Manual approval before production'));
-
-    const prodStage = pipeline.addStage(new MyPipelineAppStage(this, "prod", {
-      env: { account: "701182342014", region: "us-east-1" }
-    }));
-
-
-
   }
 }
 
