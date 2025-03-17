@@ -10,7 +10,7 @@ export class CiCdPipelineStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
   
-    new CodePipeline(this, 'Pipeline', {
+    const pipeline =  new CodePipeline(this, 'Pipeline', {
       pipelineName: 'OsaruPipeline',
       synth: new ShellStep('Synth', {
         input: CodePipelineSource.gitHub('Edidevi/cicdpipeline', 'main'),
