@@ -19,6 +19,27 @@ export class CiCdPipelineStack extends cdk.Stack {
                     'npx cdk synth']
       }),
     });
+
+
+    const testingStage = pipeline.addStage(new MyPipelineAppStage(this, "test", {
+      env: { account: "701182342014", region: "us-east-1" }
+    }));
+
+
+    testingStage.addPost(new ManualApprovalStep('Manual approval before production'));
+
+
+    const prodStage = pipeline.addStage(new MyPipelineAppStage(this, "prod", {
+      env: { account: "701182342014", region: "us-east-1" }
+    }));
+
+  }
+}
+
+
+
+
+
   }
 }
 
