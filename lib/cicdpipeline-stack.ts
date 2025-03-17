@@ -40,6 +40,4 @@ export class CiCdPipelineStack extends cdk.Stack {
 
 
 
-  }
-}
 
